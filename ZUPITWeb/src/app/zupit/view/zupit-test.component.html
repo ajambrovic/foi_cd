@@ -1,0 +1,46 @@
+<div class="ui-g">
+
+	<div class="card card-w-title ui-shadow-5">
+		<p-toolbar>
+			<h1>{{title}}</h1>
+			<div class="ui-toolbar-group-left">
+				<!--button pButton type="button" label="Novi" icon="ui-icon-plus" (click)="openSampleType(true)"></button-->
+				<!--button pButton type="button" label="Izvezi" icon="ui-icon-import-export"></button-->
+				<button pButton type="button" label="Označi" icon="ui-icon-check" (click)="toggleMultiSelect()"></button>
+			</div>
+
+			<div class="ui-toolbar-group-right">
+				<!--button pButton type="button" label="Pomoć" icon="ui-icon-help"></button-->
+				<span>Broj objekata: {{dt.totalRecords}}</span>
+			</div>
+		</p-toolbar>
+		<p-panel *ngIf="sampleTypeList?.length > config.filterLimit && showFilter" header="Filter" [toggleable]="true" [collapsed]="true">
+			Filter Content
+		</p-panel>
+
+		<p-dataTable [value]="sampleTypeList" selectionMode="multiple" [(selection)]="selectedSampleType" [paginator]="true" [rows]="10"
+		 [responsive]="false" #dt>
+			<p-column *ngFor="let col of columnData" [field]="col.field" [header]="col.header" [sortable]="col.sortable" [filter]="col.filter"
+			 [filterMatchMode]="col.filterMatchMode" [filterPlaceholder]="col.filterPlaceholder" [selectionMode]="col.selectionMode" [styleClass]="col.styleClass">
+				<template *ngIf="col.type === 'String' || col.type === undefined" let-col let-data="rowData" pTemplate="body">
+					<span class="col-string">{{ data[ col.field ] }}</span>
+				</template>
+				<template *ngIf="col.type === 'Date'" let-col let-data="rowData" pTemplate="body">
+					<span class="col-date">{{ data[ col.field ] | date: config.dateListFormat }}</span>
+				</template>
+			</p-column>
+			<p-column styleClass="col-button" *ngIf="columnActions?.length > 0">
+				<template let-sampletype="rowData" pTemplate="body">
+					<span *ngFor="let action of columnActions">
+						<button *ngIf="action.type === 'openItem'" type="button" pButton (click)="editSampleType(sampletype.id)"
+						 label="{{action.label}}"></button>
+					</span>
+				</template>
+			</p-column>
+		</p-dataTable>
+	</div>
+	<app-sample-type-change (onChanged)="onSampleTypeChanged($event)"></app-sample-type-change>
+
+	<p-confirmDialog width="425" acceptLabel="O da!" rejectLabel="Ne!"></p-confirmDialog>
+	<p-growl [value]="msgs"></p-growl>
+</div>

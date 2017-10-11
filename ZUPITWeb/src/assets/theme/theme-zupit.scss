@@ -1,0 +1,79 @@
+    $primaryColor: #1e295d;
+    $primaryDarkColor: #283593;
+    $primaryLightColor: #9fa8da;
+    $accentColor: #d71920;
+    $accentDarkColor: #ad1457;
+    $accentLightColor: #f48fb1;
+    $accentTextColor: #ffffff;
+    @import '../sass/theme/_theme';
+    $grayBgColor: #eeeeee;
+    p-toolbar .ui-inputtext {
+        color: #ffffff;
+    }
+    
+    body {
+        .ui-datatable {
+            td,
+            th {
+                &.checkboxColumn {
+                    width: 50px;
+                }
+            }
+            .ui-datatable-data tr td {
+                text-align: center;
+            }
+        }
+        .ui-dialog .ui-dialog-titlebar {
+            .ui-dialog-title {
+                font-size: $fontSize;
+                font-weight: 700;
+            }
+            h1.ui-dialog-title {
+                font-size: floor(1.25*$fontSize);
+            }
+            .ui-dialog-titlebar-icon {
+                position: absolute;
+                top: 0;
+                right: 1em;
+            }
+            .ui-g-6:nth-child(even) {
+                text-align: right;
+            }
+        }
+        .ui-accordion {
+            .ui-accordion-header {
+                background-color: transparent;
+                border: 1px solid #bdbdbd;
+                color: $textColor;
+                >a {
+                    color: $textColor;
+                }
+                &:not(.ui-state-active):not(.ui-state-disabled):hover {
+                    background-color: transparent;
+                }
+                &.ui-state-active {
+                    background-color: transparent;
+                    border-bottom: none;
+                    color: $textColor;
+                    >a {
+                        color: $textColor;
+                    }
+                }
+                .fa-caret-down {
+                    color: $textColor;
+                }
+            }
+            .ui-accordion-content {
+                p-checkbox,
+                p-radioButton {
+                    display: block;
+                }
+            }
+        }
+    }
+
+  @media (min-width: 1024px) {
+    .ui-dialog { 
+        max-width: 80%;
+    } 
+  }

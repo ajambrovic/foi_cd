@@ -1,0 +1,153 @@
+<p-dialog [(visible)]="isVisible" modal="modal" showEffect="fade" [style]="{position: 'absolute'}">
+	<p-header class="ui-g"> 
+
+		<div class="ui-g-6">
+			<h1 class="ui-dialog-title">Postupak: {{header}}</h1>
+			<h2 class="ui-dialog-title">Tijelo: Ministarstvo financija</h2>
+		</div>
+		<div class="ui-g-6">
+			<h2 class="ui-dialog-title">Vlasnik: Pero Perić</h2>
+		</div>
+
+	</p-header>
+	<p-tabView>
+		<p-tabPanel header="Postupak">
+			<p-accordion class="form-group ui-fluid" *ngIf="isVisible" [multiple]="true">
+				<p-accordionTab [selected]="true" header="Detalji postupka">
+					<div class="ui-g">
+						<div class="ui-g-4 ui-md-2">
+							<label>Upravno područje</label>
+						</div>
+
+						<div class="ui-g-8 ui-md-10">
+							<p-dropdown [options]="data.podrucja" [(ngModel)]="selectedPodrucje" [autoWidth]="false"></p-dropdown>
+						</div>
+
+						<div class="ui-g-4 ui-md-2">
+							<label>Upravni posao</label>
+						</div>
+
+						<div class="ui-g-8 ui-md-10">
+							<p-dropdown [options]="data.poslovi" [(ngModel)]="selectedPosao" [autoWidth]="false"></p-dropdown>
+						</div>
+
+						<div class="ui-g-4 ui-md-2"><label>Klasa</label></div>
+						<div class="ui-g-8 ui-md-10">
+							<span class="md-inputfield"> 
+								<input type="text" pInputText [(ngModel)]="sampleType.klasa" /> 			
+							</span>
+						</div>
+
+						<div class="ui-g-4 ui-md-2"><label>Opis postupka</label></div>
+						<div class="ui-g-8 ui-md-10">
+							<span class="md-inputfield"> 
+								<input type="text" pInputText [(ngModel)]="sampleType.vrsta_postupka" /> 
+							</span>
+						</div>
+
+						<div class="ui-g-4 ui-md-2">
+							<label>Dan pokretanja postupka</label>
+						</div>
+						<div class="ui-g-8 ui-md-10">
+							<p-calendar [(ngModel)]="selectedDate" [maxDate]="maxDate" [dateFormat]="config.dateComponentFormat" [showIcon]="true" [dataType]="date"
+							 (onSelect)="onDateChanged($event)"></p-calendar>
+						</div>
+
+		
+						<div class="ui-g-4 ui-md-2">
+							<label>Stari ZUP</label>
+						</div>
+						<div class="ui-g-8 ui-md-10">
+							<p-dropdown [options]="data.oldZUP" [(ngModel)]="selectedOldZUP" [autoWidth]="false"></p-dropdown>
+						</div>
+		
+
+						<div class="ui-g-4 ui-md-2">
+							<label>Pokretanje postupka</label>
+						</div>
+						<div class="ui-g-8 ui-md-10">
+							<p-dropdown [options]="data.byArticle" [(ngModel)]="selectedByArticle" [autoWidth]="false"></p-dropdown>
+						</div>
+		
+						<div class="ui-g-4 ui-md-2">
+							<label>-></label>
+						</div>
+						<div class="ui-g-8 ui-md-10">
+							<p-dropdown [options]="data.byArticleType" [(ngModel)]="selectedByArticleType" [autoWidth]="false" [disabled]=!selectedByArticle></p-dropdown>
+						</div>
+
+					</div>
+				</p-accordionTab>
+				<p-accordionTab [selected]="true" header="Stranka u postupku">
+					<div class="ui-g">
+						<div class="card ui-g-12">
+							<div class="ui-g-4 ui-md-2">
+								<label>Identifikacija stranke (čl. 4)</label>
+							</div>
+							<div class="ui-g-8">
+								<p-checkbox name="selectedPartyIdentification" value="1" label="Fizička osoba" [(ngModel)]="selectedPartyIdentification"></p-checkbox>
+								<p-checkbox name="selectedPartyIdentification" value="2" label="Pravna osoba" [(ngModel)]="selectedPartyIdentification"></p-checkbox>
+								<p-checkbox name="selectedPartyIdentification" value="3" label="Tijelo državne uprave" [(ngModel)]="selectedPartyIdentification"></p-checkbox>
+								<p-checkbox name="selectedPartyIdentification" value="4" label="Drugo državno tijelo" [(ngModel)]="selectedPartyIdentification"></p-checkbox>
+							</div>
+						</div>
+						<div class="card ui-g-12">
+							<div class="ui-g-4 ui-md-2">
+								<label>Zastupanje stranke (čl. 32)</label>
+							</div>
+							<div class="ui-g-8 ui-md-10">
+								<p-checkbox name="selectedPartyRepresentation" value="1" label="Zakonski zastupnik" [(ngModel)]="selectedPartyRepresentation"></p-checkbox>
+								<p-checkbox name="selectedPartyRepresentation" value="2" label="Privremeni zastupnik" [(ngModel)]="selectedPartyRepresentation"></p-checkbox>
+								<p-checkbox name="selectedPartyRepresentation" value="3" label="Opunomoćenik" [(ngModel)]="selectedPartyRepresentation"></p-checkbox>
+							</div>
+						</div>
+						<div class="card ui-g-12">
+							<div class="ui-g-4 ui-md-2">
+								<label>Izjašnjavanje stranke (čl. 30)</label>
+							</div>
+							<div class="ui-g-8 ui-md-10">
+								<p-dropdown [options]="data.selectedPartyExplaining" [(ngModel)]="selectedPartyExplaining" [autoWidth]="false"></p-dropdown>
+							</div>
+						</div>
+						<div class="card ui-g-12">
+							<div class="ui-g-4 ui-md-2">
+								<label>-></label>
+							</div>
+							<div class="ui-g-8 ui-md-10">
+								<p-checkbox name="selectedPartyExplainingReason" value="1" label="se zahtjev stranke usvaja" [(ngModel)]="selectedPartyExplainingReason"
+								 [disabled]="selectedPartyExplaining != '2'"></p-checkbox>
+								<p-checkbox name="selectedPartyExplainingReason" value="2" label="odluka nema negativan učinak na pravne interese stranke"
+								 [(ngModel)]="selectedPartyExplainingReason" [disabled]="selectedPartyExplaining != '2'"></p-checkbox>
+								<p-checkbox name="selectedPartyExplainingReason" value="2" label="je izjašnjavanje stranke isključeno zakonom" [(ngModel)]="selectedPartyExplainingReason"
+								 [disabled]="selectedPartyExplaining != '2'"></p-checkbox>
+							</div>
+						</div>
+					</div>
+				</p-accordionTab>
+			</p-accordion>
+
+		</p-tabPanel>
+		<p-tabPanel header="Rješenje">
+			Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather parallels the young Vito
+			Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American
+			dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family.
+			Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local
+			Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature
+			grows.
+		</p-tabPanel>
+		<p-tabPanel header="Prigovor">
+			After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third
+			and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now
+			divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+		</p-tabPanel>
+	</p-tabView>
+	<p-footer>
+		<p-toolbar>
+			<div class="ui-toolbar-group-right">
+				<!--button pButton type="button" label="Briši" icon="ui-icon-plus" (click)="delete()"></button-->
+				<button pButton type="button" label="Spremi" icon="ui-icon-import-export" (click)="save()"></button>
+				<button pButton type="button" label="Zatvori" icon="ui-icon-check" (click)="isVisible=false"></button>
+			</div>
+		</p-toolbar>
+	</p-footer>
+</p-dialog>

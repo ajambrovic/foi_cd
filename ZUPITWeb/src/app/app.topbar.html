@@ -1,0 +1,27 @@
+<div class="topbar clearfix">
+    <div class="topbar-left">
+        <div class="logo"></div>
+    </div>
+
+    <div class="topbar-right">
+
+        <a id="menu-button" href="#" (click)="app.onMenuButtonClick($event)" [ngClass]="{'menu-button-rotate': app.rotateMenuButton}">
+            <i></i>
+        </a>
+
+        <a id="topbar-menu-button" href="#" (click)="app.onTopbarMenuButtonClick($event)">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul class="topbar-items animated fadeInDown" [ngClass]="{'topbar-items-visible': app.topbarMenuActive}">
+            <li role="menuitem">
+                <span>Pero Perić</span>
+            </li>
+            <li role="menuitem">
+                <a href="#">
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+        <div class="logo-right"></div>
+    </div>
+</div>

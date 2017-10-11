@@ -1,0 +1,107 @@
+$primaryColor: #1e295d;
+$primaryDarkColor: #283593;
+$primaryLightColor: #9fa8da;
+$accentColor: #d71920;
+$accentDarkColor: #ad1457;
+$accentLightColor: #f48fb1;
+$accentTextColor: #ffffff;
+$darkMenuBgColor: #424242;
+$darkMenuHoverColor: #676767;
+@import '../../sass/layout/_layout';
+$grayBgColor: #eeeeee;
+$logo-main-width: 201px;
+$logo-main-height: 48px;
+$logo-right-width: 183px;
+$logo-right-height: 48px;
+.layout-container .topbar,
+.splash-screen {
+    .logo {
+        width: 101px;
+        height: 24px;
+        background: url("../images/logo-small.png") top left no-repeat;
+        background-size: 101px 24px;
+    }
+}
+
+.logo-footer {
+    width: 72px;
+    height: 48px;
+    background: url("../images/logo-footer.png") top left no-repeat;
+    background-size: 72px 48px;
+    margin: 0 auto;
+}
+
+.layout-container .topbar {
+    background-color: $accentTextColor;
+    .topbar-left {
+        background-color: $accentTextColor;
+        padding: 13px 24px;
+    }
+    .topbar-right {
+        .logo-right {
+            width: 92px;
+            height: 24px;
+            background: url("../images/logo-right-small.png") top left no-repeat;
+            background-size: 92px 24px;
+            margin-left: 10px;
+        }
+        a:visited {
+            color: $primaryColor;
+        }
+        #topbar-menu-button i {
+            color: $primaryColor;
+        }
+    }
+}
+
+@media (min-width: 640px) {
+    .layout-container .topbar,
+    .splash-screen {
+        .logo {
+            width: $logo-main-width;
+            height: $logo-main-height;
+            background: url("../images/logo.png") top left no-repeat;
+            background-size: $logo-main-width $logo-main-height;
+        }
+    }
+    .layout-container .topbar .topbar-right .logo-right {
+        width: $logo-right-width;
+        height: $logo-right-height;
+        background: url("../images/logo-right.png") top left no-repeat;
+        background-size: $logo-right-width $logo-right-height;
+        float: right;
+        margin-right: 86px;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    // same as link properties
+    .layout-container .topbar .topbar-right .topbar-items>li>span {
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+        font-size: 16px;
+        padding: 16px 16px;
+        color: $textColor;
+        position: relative;
+    }
+}
+
+@media (min-width: 1025px) {
+    .layout-container {
+        .topbar-items>li {
+            float: none;
+        }
+        .topbar .topbar-right {
+            padding: 13px 24px;
+            color: $primaryColor;
+            .logo-right {
+                margin: 0 24px;
+            }
+        }
+        &.menu-layout-horizontal .topbar .topbar-left {
+            background-color: $accentTextColor;
+        }
+    }
+}
