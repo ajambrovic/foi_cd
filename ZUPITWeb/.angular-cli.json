@@ -20,7 +20,9 @@
         "../node_modules/fullcalendar/dist/fullcalendar.min.css",
         "../node_modules/quill/dist/quill.core.css",
         "../node_modules/quill/dist/quill.snow.css",
-        "../node_modules/nanoscroller/bin/css/nanoscroller.css"
+        "../node_modules/nanoscroller/bin/css/nanoscroller.css",
+        "assets/layout/css/layout-zupit.scss",
+        "assets/theme/theme-zupit.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",

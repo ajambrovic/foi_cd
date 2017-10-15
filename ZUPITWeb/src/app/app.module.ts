@@ -69,6 +69,7 @@ import { ToolbarModule } from 'primeng/primeng';
 import { TooltipModule } from 'primeng/primeng';
 import { TreeModule } from 'primeng/primeng';
 import { TreeTableModule } from 'primeng/primeng';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppMenuComponent, AppSubMenu } from './app.menu.component';
@@ -173,7 +174,8 @@ import { APP_CONFIG, AppConfig } from './app.config';
     ToolbarModule,
     TooltipModule,
     TreeModule,
-    TreeTableModule
+    TreeTableModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,
