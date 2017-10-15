@@ -15,6 +15,7 @@ import { FileDemo } from './demo/view/filedemo';
 import { UtilsDemo } from './demo/view/utilsdemo';
 import { Documentation } from './demo/view/documentation';
 import { ZupitTestComponent } from './zupit/view/zupit-test.component';
+import { NTAPLoginComponent } from 'app/ntap-login/view/ntap-login.component';
 
 
 export const routes: Routes = [
@@ -31,7 +32,7 @@ export const routes: Routes = [
   { path: 'charts', component: ChartsDemo },
   { path: 'file', component: FileDemo },
   { path: 'utils', component: UtilsDemo },
-  { path: 'documentation', component: Documentation },
+  { path: 'login', component: NTAPLoginComponent },
   { path: '', component: ZupitTestComponent },
 ];
 

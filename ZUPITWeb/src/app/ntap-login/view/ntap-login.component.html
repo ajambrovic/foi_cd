@@ -1,0 +1,94 @@
+<div class="card login-panel ui-fluid">
+    <form class="ui-g" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit($event, loginForm.value)" *ngIf="!showChangePassword">
+        <div class="ui-g-12">
+            <img [src]="config.logoSource">
+        </div>
+        <div class="ui-g-12" *ngIf="msgs">
+            <p-messages [value]="msgs"></p-messages>
+        </div>
+        <div class="ui-g-12">
+            <span class="md-inputfield">
+                <input name="username" type="text" pInputText autocomplete="off" [formControl]="loginForm.controls['username']" [ngClass]="{'ui-state-filled': !loginForm.get('username').hasError('required'), 'ng-invalid': loginForm.get('username').hasError('required')}"  class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                <label>Korisničko ime</label>
+                <div *ngIf="loginForm.get('username').hasError('required') && loginForm.get('username').touched" class="ui-message ui-messages-error ui-corner-all">
+                    Korisničko ime je obavezno
+                </div>
+            </span>
+        </div>
+        <div class="ui-g-12">
+            <span class="md-inputfield">
+                <input name="password" type="password" pInputText autocomplete="off" [formControl]="loginForm.controls['password']" [ngClass]="{'ui-state-filled': !loginForm.get('password').hasError('required'), 'ng-invalid': loginForm.get('password').hasError('required')}" class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                <label>Lozinka</label>
+                <div *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched" class="ui-message ui-messages-error ui-corner-all">
+                    Lozinka je obavezna
+                </div>
+            </span>
+        </div>
+        <div class="ui-g-12" *ngIf="!showChangePassword">
+            <button id="login" type="submit" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left" [disabled]="!loginForm.valid">
+                <span class="ui-button-icon-left ui-c fa fa-fw ui-icon-person"></span>
+                <span class="ui-button-text ui-c">Prijavite se</span>
+            </button>
+        </div>
+    </form>
+
+    <form class="ui-g" [formGroup]="changePasswordForm" (ngSubmit)="onLoginSubmit($event, changePasswordForm.value)" *ngIf="showChangePassword">
+        <div class="ui-g-12">
+            <img [src]="config.logoSource">
+        </div>
+        <div class="ui-g-12" *ngIf="msgs">
+            <p-messages [value]="msgs"></p-messages>
+        </div>
+        <div class="ui-g-12">
+            <span class="md-inputfield">
+                <input name="username" type="text" pInputText autocomplete="off" [formControl]="changePasswordForm.controls['username']" [ngClass]="{'ui-state-filled': !changePasswordForm.get('username').hasError('required'), 'ng-invalid': changePasswordForm.get('username').hasError('required')}"  class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                <label>Korisničko ime</label>
+                <div *ngIf="changePasswordForm.get('username').hasError('required') && changePasswordForm.get('username').touched" class="ui-message ui-messages-error ui-corner-all">
+                    Korisničko ime je obavezno
+                </div>
+            </span>
+        </div>
+        <div class="ui-g-12">
+            <span class="md-inputfield">
+                <input name="password" type="password" pInputText autocomplete="off" [formControl]="changePasswordForm.controls['password']" [ngClass]="{'ui-state-filled': !changePasswordForm.get('password').hasError('required'), 'ng-invalid': changePasswordForm.get('password').hasError('required')}" class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                <label>Lozinka</label>
+                <div *ngIf="changePasswordForm.get('password').hasError('required') && changePasswordForm.get('password').touched" class="ui-message ui-messages-error ui-corner-all">
+                    Lozinka je obavezna
+                </div>
+            </span>
+        </div>
+        <div class="ui-g-12">
+            <span class="md-inputfield">
+                <input type="password" autocomplete="off" class="ui-inputtext ui-corner-all ui-state-default ui-widget" [ngClass]="{'ui-state-filled': !changePasswordForm.get('newPassword').hasError('required'), 'ng-invalid': changePasswordForm.get('newPassword').hasError('required')}" [formControl]="changePasswordForm.controls['newPassword']">
+                <label>Nova lozinka</label>
+            </span>
+        </div>
+        <div class="ui-g-12">
+            <span class="md-inputfield">
+                <input type="password" autocomplete="off" class="ui-inputtext ui-corner-all ui-state-default ui-widget" [ngClass]="{'ui-state-filled': !changePasswordForm.get('newPasswordRetype').hasError('required'), 'ng-invalid': changePasswordForm.get('newPasswordRetype').hasError('required')}" [formControl]="changePasswordForm.controls['newPasswordRetype']">
+                <label>Ponovite novu lozinku</label>
+            </span>
+        </div>
+        <div class="ui-g-12">
+            <button type="submit" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left" [disabled]="!changePasswordForm.valid">
+                <span class="ui-button-icon-left ui-c fa fa-fw ui-icon-lock"></span>
+                <span class="ui-button-text ui-c">Promijenite lozinku</span>
+            </button>
+        </div>
+    </form>
+
+    <style>
+        .changeForm:hover {
+            text-decoration: underline;
+            cursor: pointer;
+            margin: auto;
+            width: 50%;
+        }
+    </style>
+    <div *ngIf="showChangePassword" class="changeForm" (click)="showChangePassword=false">
+        Prijava
+    </div>
+    <div *ngIf="!showChangePassword" class="changeForm" (click)="showChangePassword=true">
+        Promjena zaporke
+    </div>
+</div>

@@ -4,6 +4,7 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
 import { InjectionToken } from '@angular/core';
+import { INTAPLoginConfig } from 'app/ntap-login/intap-login.config';
 
 export const environment = {
   production: false,
@@ -20,3 +21,12 @@ export const environment = {
   textareaCols: 30,
   textareaRows: 5,
 };
+
+export let LOGIN_CONFIG = new InjectionToken('login.config');
+export const NTAPLoginConfig: INTAPLoginConfig = {
+  logoSource: 'assets/layout/images/logo.png',
+  authenticationEndpointAuthenticate: environment.apiEndpoint + '/authenticate',
+  authenticationEndpointLogout: environment.apiEndpoint + '/logout',
+  authenticationEndpointChangePassword: environment.apiEndpoint + '/changePassword',
+  credentialsExpiredCode: '403.3'
+}

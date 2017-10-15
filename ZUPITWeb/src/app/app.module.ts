@@ -105,6 +105,8 @@ import { MenuService } from './zupit/service/menu.service';
 import { SampleTypeChangeComponent } from './zupit/view/sample-type-change.component';
 
 import { APP_CONFIG, AppConfig } from './app.config';
+import { NTAPLoginModule } from 'app/ntap-login/ntap-login.module';
+import { NTAPLoginConfig, LOGIN_CONFIG } from 'environments/environment';
 
 @NgModule({
   imports: [
@@ -175,7 +177,8 @@ import { APP_CONFIG, AppConfig } from './app.config';
     TooltipModule,
     TreeModule,
     TreeTableModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NTAPLoginModule.forRoot(),
   ],
   declarations: [
     AppComponent,
@@ -204,7 +207,8 @@ import { APP_CONFIG, AppConfig } from './app.config';
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    CarService, CountryService, EventService, NodeService, SampleTypeService, MenuService, { provide: APP_CONFIG, useValue: AppConfig }
+    CarService, CountryService, EventService, NodeService, SampleTypeService, MenuService, { provide: APP_CONFIG, useValue: AppConfig },
+    { provide: LOGIN_CONFIG, useValue: NTAPLoginConfig },
   ],
   bootstrap: [AppComponent]
 })
