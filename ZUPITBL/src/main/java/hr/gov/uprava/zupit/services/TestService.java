@@ -25,7 +25,7 @@ public class TestService {
 
 	@Transactional
 	public SampleType saveSampleType(final SampleType sampleType) {
-		if (sampleType.getId() == null) {
+		if (sampleType.getIme() == null) {
 			testDAO.insertSampleType(sampleType);
 		} else {
 			testDAO.updateSampleType(sampleType);

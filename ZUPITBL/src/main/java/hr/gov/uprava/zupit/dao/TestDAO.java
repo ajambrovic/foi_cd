@@ -34,11 +34,12 @@ public class TestDAO {
 			@Override
 			public SampleType mapRow(final ResultSet rs, final int rowNumber) throws SQLException {
 				SampleType result = new SampleType();
-				result.setId(rs.getInt("id"));
-				result.setName(rs.getString("sample_type_name"));
-				result.setStatus(rs.getInt("status"));
-				result.setType(rs.getString("s_type"));
-				result.setDate(new Date());
+				result.setIme(rs.getString("pacijent_ime"));
+				result.setPrezime(rs.getString("pacijent_prezime"));
+				result.setOpis(rs.getString("opis_pregleda"));
+				result.setTermin(rs.getDate("termin_pregleda"));
+				//result.setType(rs.getString("s_type"));
+				//result.setDate(new Date());
 				return result;
 			}
 		});
@@ -47,7 +48,7 @@ public class TestDAO {
 	}
 	
 	public void deleteSampleType(final SampleType sampleType) {		
-		jdbcTemplate.update(DELETE_QUERY, new Object[] { sampleType.getId() });
+		jdbcTemplate.update(DELETE_QUERY, new Object[] { sampleType.getIme() });
 	}
 	
 	public void updateSampleType(final SampleType sampleType) {		
@@ -58,8 +59,8 @@ public class TestDAO {
 	public SampleType insertSampleType(final SampleType sampleType) {
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(sampleType);
 		KeyHolder keyHolder = new GeneratedKeyHolder();
-		namedJdbcTemplate.update(INSERT_QUERY, parameters, keyHolder, new String[]{"id"});
-		sampleType.setId(keyHolder.getKey().intValue());
+		namedJdbcTemplate.update(INSERT_QUERY, parameters, keyHolder, new String[]{"pacijent_ime"});
+		sampleType.setIme(keyHolder.getKey().toString());
 		return sampleType;
 	}
 
@@ -67,5 +68,5 @@ public class TestDAO {
 	final static String INSERT_QUERY =  "INSERT INTO test.sample_types(sample_type_name, status, s_type) VALUES (:name, 0, :type)";
 	final static String UPDATE_QUERY = "UPDATE test.sample_types set sample_type_name = :name, s_type = :type, status = :status WHERE id = :id ";
 	final static String DELETE_QUERY = "DELETE from test.sample_types WHERE id = ?";
-	final static String READ_ALL_QUERY = "SELECT id, sample_type_name, status, s_type FROM   test.sample_types";
+	final static String READ_ALL_QUERY = "select t.pacijent_ime, t.pacijent_prezime, v.opis_pregleda, t.termin_pregleda from vrsta_pregleda v RIGHT JOIN termini t on t.vrsta_pregleda = v.id;";
 }
