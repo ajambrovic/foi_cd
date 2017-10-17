@@ -35,10 +35,10 @@ public class TestDAO {
 			public SampleType mapRow(final ResultSet rs, final int rowNumber) throws SQLException {
 				SampleType result = new SampleType();
 				result.setId(rs.getInt("id"));
-				result.setName(rs.getString("sample_type_name"));
-				result.setStatus(rs.getInt("status"));
-				result.setType(rs.getString("s_type"));
-				result.setDate(new Date());
+				result.setName(rs.getString("pacijent_ime"));
+				result.setLastName(rs.getString("pacijent_prezime"));
+				result.setType(rs.getString("vrsta_pregleda"));
+				result.setDate(rs.getDate("termin_pregleda"));
 				return result;
 			}
 		});
@@ -67,5 +67,5 @@ public class TestDAO {
 	final static String INSERT_QUERY =  "INSERT INTO test.sample_types(sample_type_name, status, s_type) VALUES (:name, 0, :type)";
 	final static String UPDATE_QUERY = "UPDATE test.sample_types set sample_type_name = :name, s_type = :type, status = :status WHERE id = :id ";
 	final static String DELETE_QUERY = "DELETE from test.sample_types WHERE id = ?";
-	final static String READ_ALL_QUERY = "SELECT id, sample_type_name, status, s_type FROM   test.sample_types";
-}
+	final static String READ_ALL_QUERY = "SELECT termin_pregleda, pacijent_prezime, pacijent_ime, vrsta_pregleda, id\n FROM public.termini";
+} //SELECT id, sample_type_name, status, s_type FROM   test.sample_types

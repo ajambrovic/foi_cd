@@ -9,6 +9,7 @@ public class SampleType {
 	private Integer status;
 	private String type;
 	private Date date;
+	private String lastName;
 	
 	public Integer getId() {
 		return id;
@@ -22,6 +23,16 @@ public class SampleType {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	
 	public Integer getStatus() {
 		return status;
 	}

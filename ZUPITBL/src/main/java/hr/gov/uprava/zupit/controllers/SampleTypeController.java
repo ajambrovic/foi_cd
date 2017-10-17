@@ -25,12 +25,14 @@ public class SampleTypeController {
 	TestService testService;
 
 	@RequestMapping("/sampleType/getAllMock")
-	public ResponseEntity<InputStreamResource> getAllMock() throws IOException {
-		ClassPathResource jsonFile = new ClassPathResource("data.json");
-
-		return ResponseEntity.ok().contentLength(jsonFile.contentLength())
+	public ResponseEntity<List<SampleType> > getAllMock() throws IOException {
+		//ClassPathResource jsonFile = new ClassPathResource("data.json");
+		
+		List<SampleType> sampleList = testService.getSampleTypes();
+		
+		return ResponseEntity.ok()
 				.contentType(MediaType.parseMediaType("application/json"))
-				.body(new InputStreamResource(jsonFile.getInputStream()));
+				.body(sampleList);
 	}
 
 	@RequestMapping("/sampleType/getMenuItems")
