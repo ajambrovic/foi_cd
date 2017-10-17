@@ -1,5 +1,5 @@
-$primaryColor: #1e295d;
-$primaryDarkColor: #283593;
+$primaryColor: #249cd7;
+$primaryDarkColor: #249cd7;
 $primaryLightColor: #9fa8da;
 $accentColor: #d71920;
 $accentDarkColor: #ad1457;
@@ -65,10 +65,10 @@ $logo-right-height: 48px;
         }
     }
     .layout-container .topbar .topbar-right .logo-right {
-        width: $logo-right-width;
+        width: 48px;
         height: $logo-right-height;
-        background: url("../images/logo-right.png") top left no-repeat;
-        background-size: $logo-right-width $logo-right-height;
+        background: url("../images/user.png") top left no-repeat;
+        background-size: 48px;
         float: right;
         margin-right: 86px;
         margin-left: 0;
