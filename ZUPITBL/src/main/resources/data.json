@@ -9,54 +9,38 @@
     "description" : "Spremi"
   } ],
   "attributes" : [ {
-    "name" : "datum_pocetka",
-    "type" : "Date",
-    "displayName" : "Datum početka",
+    "name" : "termin_pregleda",
+    "type" : "Timestamp",
+    "displayName" : "Termin pregleda",
     "maxLength" : 0,
     "allowEmpty" : false,
-    "category" : "Postupak",
+    "category" : "Pregled",
     "subCategory" : null
   }, {
-    "name" : "vrsta_postupka",
+    "name" : "pacijent_prezime",
     "type" : "String",
-    "displayName" : "Vrsta postupka",
-    "maxLength" : 0,
+    "displayName" : "Prezime pacijenta",
+    "maxLength" : 100,
     "allowEmpty" : false,
-    "category" : "Postupak",
+    "category" : "Prezime",
     "subCategory" : null
   }, {
-    "name" : "name",
+    "name" : "pacijent_ime",
     "type" : "String",
-    "displayName" : "Naziv",
-    "maxLength" : 512,
+    "displayName" : "Ime pacijenta",
+    "maxLength" : 50,
     "allowEmpty" : false,
-    "category" : "Postupak",
+    "category" : "Ime",
     "subCategory" : null
   }, {
-    "name" : "klasa",
-    "type" : "String",
-    "displayName" : "Klasa",
+    "name" : "vrsta_pregleda",
+    "type" : "Integer",
+    "displayName" : "Vrsta pregleda",
     "maxLength" : 0,
     "allowEmpty" : false,
-    "category" : "Postupak",
+    "category" : "Pregled",
     "subCategory" : null
-  }, {
-    "name" : "datum_rjesenja",
-    "type" : "Date",
-    "displayName" : "Datum rješenja",
-    "maxLength" : 0,
-    "allowEmpty" : false,
-    "category" : "Rješenje",
-    "subCategory" : null
-  }, {
-    "name" : "vrsta_stranke",
-    "type" : "String",
-    "displayName" : "Vrsta postupka",
-    "maxLength" : 0,
-    "allowEmpty" : false,
-    "category" : "Postupak",
-    "subCategory" : "Stranke"
-  }, {
+  },  {
     "name" : "id",
     "type" : "Integer",
     "displayName" : null,
@@ -64,135 +48,43 @@
     "allowEmpty" : false,
     "category" : null,
    "subCategory" : null
-  }, {
-    "name" : "modify_time",
-    "type" : "Date",
-    "displayName" : "Datum izmjene",
-    "maxLength" : 0,
-    "allowEmpty" : false,
-    "category" : "Postupak",
-    "subCategory" : null
-  }
-   ],
+  } ],
   "columnConfig" : {
-    "columns" : [  "name", "klasa", "vrsta_postupka", "modify_time" ],
-    "searchable" : [ "name", "klasa" ],
-    "sortable" : [ "vrsta_postupka", "modify_time", "name", "klasa" ],
+    "columns" : [  "termin_pregleda", "pacijent_prezime", "pacijent_ime", "vrsta_pregleda" ],
+    "searchable" : [ "vrsta_pregleda", "pacijent_prezime" ],
+    "sortable" : [  "termin_pregleda", "pacijent_prezime", "pacijent_ime", "vrsta_pregleda" ],
     "idColumnName" : "id"
   },
   "items" : [ {
-    "datum_pocetka" : 1489406991721,
-    "vrsta_postupka" : "ispitni",
-    "name" : "Postupak 1",
-    "klasa" : "UP/I 360-3/2015-10/1",
-    "datum_rjesenja" : 1489406991721,
-    "modify_time" : 1489406991721,
-    "vrsta_stranke" : "Pravna",
-    "id" : 122
+  
+	  "termin_pregleda" : "23.10.2017. 18:25",
+	  "pacijent_prezime": "Marković",
+	  "pacijent_ime" : "Marko",
+	  "vrsta_pregleda": 1,
+	  "id" : 4
   }, {
-    "datum_pocetka" : 1481406591721,
-    "vrsta_postupka" : "neposredni",
-    "name" : "Postupak 2",
-    "klasa" : "UP/I 360-3/2015-10/2",
-    "datum_rjesenja" : 1385406591721,
-     "modify_time" : 1385406591721,
-    "vrsta_stranke" : "Fizička",
-    "id" : 231
-  }, {
-    "datum_pocetka" : 1489406091721,
-    "vrsta_postupka" : "neposredni",
-    "name" : "Postupak 3",
-    "klasa" : "UP/I 360-3/2015-10/3",
-    "datum_rjesenja" : 1289406091721,
-    "modify_time" : 1289406091721,
-    "vrsta_stranke" : "Pravna",
-    "id" : 31
-  },
-  {
-    "datum_pocetka" : 1189406991721,
-    "vrsta_postupka" : "ispitni",
-    "name" : "Postupak 1",
-    "klasa" : "UP/I 360-3/2015-10/1",
-    "datum_rjesenja" : 1489406991721,
-    "modify_time" : 1489406991721,
-    "vrsta_stranke" : "Pravna",
-    "id" : 1
-  }, {
-    "datum_pocetka" : 1081406591721,
-    "vrsta_postupka" : "neposredni",
-    "name" : "Postupak 2",
-    "klasa" : "UP/I 360-3/2015-10/2",
-    "datum_rjesenja" : 1485406591721,
-     "modify_time" : 1485406591721,
-    "vrsta_stranke" : "Fizička",
-    "id" : 233
-  }, {
-    "datum_pocetka" : 1489406091721,
-    "vrsta_postupka" : "neposredni",
-    "name" : "Postupak 3",
-    "klasa" : "UP/I 360-3/2015-10/3",
-    "datum_rjesenja" : 1489406091721,
-     "modify_time" : 1489406091721,
-    "vrsta_stranke" : "Pravna",
-    "id" : 8357
-  },
-  {
-    "datum_pocetka" : 1489406991721,
-    "vrsta_postupka" : "ispitni",
-    "name" : "Postupak 1",
-    "klasa" : "UP/I 360-3/2015-10/1",
-    "datum_rjesenja" : 1319406991721,
-      "modify_time" : 1319406991721,
-    "vrsta_stranke" : "Pravna",
-    "id" : 122234
-  }, {
-    "datum_pocetka" : 1481406591721,
-    "vrsta_postupka" : "neposredni",
-    "name" : "Postupak 2",
-    "klasa" : "UP/I 360-3/2015-10/2",
-    "datum_rjesenja" : 1325406591721,
-    "modify_time" : 1325406591721,
-    "vrsta_stranke" : "Fizička",
-    "id" : 432231
-  }, {
-    "datum_pocetka" : 1489406091721,
-    "vrsta_postupka" : "neposredni",
-    "name" : "Postupak 3",
-    "klasa" : "UP/I 360-3/2015-10/3",
-    "datum_rjesenja" : 1339406091721,
-    "modify_time" : 1339406091721,
-    "vrsta_stranke" : "Pravna",
-    "id" : 3123
-  },
-  {
-    "datum_pocetka" : 1189406991721,
-    "vrsta_postupka" : "ispitni",
-    "name" : "Postupak 1",
-    "klasa" : "UP/I 360-3/2015-10/1",
-    "datum_rjesenja" : 1345406991721,
-      "modify_time" : 1345406991721,
-    "vrsta_stranke" : "Pravna",
-    "id" : 2
-  }, {
-    "datum_pocetka" : 1081406591721,
-    "vrsta_postupka" : "neposredni",
-    "name" : "Postupak 2",
-    "klasa" : "UP/I 360-3/2015-10/2",
-    "datum_rjesenja" : 1355406591721,
-    "modify_time" : 1355406591721,
-    "vrsta_stranke" : "Fizička",
-    "id" : 233123
-  }, {
-    "datum_pocetka" : 1369406091721,
-    "vrsta_postupka" : "neposredni",
-    "name" : "Postupak 3",
-    "klasa" : "UP/I 360-3/2015-10/3",
-    "datum_rjesenja" : 1379406091721,
-     "modify_time" : 1379406091721,
-    "vrsta_stranke" : "Pravna",
-    "id" : 835744
+  
+	  "termin_pregleda" : "24.10.2017. 18:25",
+	  "pacijent_prezime": "Ivić",
+	  "pacijent_ime" : "Ivan",
+	  "vrsta_pregleda": 3,
+	  "id" : 3
+  },{
+  
+	  "termin_pregleda" : "25.10.2017. 18:25",
+	  "pacijent_prezime": "Ivaković",
+	  "pacijent_ime" : "Željko",
+	  "vrsta_pregleda": 2,
+	  "id" : 2
+  },{
+  
+	  "termin_pregleda" : "26.10.2017. 18:25",
+	  "pacijent_prezime": "Županić",
+	  "pacijent_ime" : "Denis",
+	  "vrsta_pregleda": 1,
+	  "id" : 1
   } ],
-  "title" : "Postupci",
+  "title" : "Termini",
   "idColumn" : "id",
   "showFilter" : "true"
 }
